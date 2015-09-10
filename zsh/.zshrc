@@ -78,6 +78,5 @@ fi
 # Insert custom aliases
 source $ZSH_CUSTOM/aliases.sh
 
-
-
-
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
