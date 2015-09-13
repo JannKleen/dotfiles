@@ -44,7 +44,7 @@ ZSH_THEME="jann"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew aws pep8 pip python sudo bower common-aliases osx xcode virtualenv virtualenvwrapper vagrant tmux z django ssh-agent)
+plugins=(git git-flow-avh brew aws pep8 pip python sudo bower common-aliases osx xcode virtualenv virtualenvwrapper vagrant tmux z django ssh-agent)
 
 # User configuration
 
