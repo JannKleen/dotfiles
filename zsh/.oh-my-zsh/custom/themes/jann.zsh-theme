@@ -2,7 +2,7 @@ local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
 
 # Copied from old version of tonotdo's theme. LSCOLORS modified.
 #PROMPT='${ret_status}$fg_no_bold[yellow]$(virtualenv_info)%{$fg_no_bold[cyan]%}%n%{$fg_no_bold[magenta]%}🐼 %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
-PROMPT='${ret_status}$fg_no_bold[yellow]$(virtualenv_info) 🐼  %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
+PROMPT='${ret_status}%{$fg_no_bold[yellow]%}$(virtualenv_info) 🐼  %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
 
 RPROMPT='[%*]'
 
