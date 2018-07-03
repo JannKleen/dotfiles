@@ -79,8 +79,8 @@ fi
 source $ZSH_CUSTOM/aliases.sh
 
 # NVM config
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+#export NVM_DIR=~/.nvm
+#source $(brew --prefix nvm)/nvm.sh
 
 
 bindkey '^[[H' beginning-of-line
