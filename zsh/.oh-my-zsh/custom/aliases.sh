@@ -6,3 +6,8 @@ alias snake="VERSIONER_PYTHON_PREFER_32_BIT=yes pythonw \`which runsnake32\`"
 alias bubo='brew update && brew outdated'
 alias bubc='brew upgrade && brew cleanup'
 alias bubu='bubo && bubc'
+
+if [[ -x "/usr/local/bin/rsync" ]]
+then
+    alias rsync='/usr/local/bin/rsync'
+fi
