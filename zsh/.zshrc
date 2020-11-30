@@ -42,12 +42,13 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_rsa id_rsa2 gitlab google_compute_engine
+zstyle :omz:plugins:ssh-agent identities id_rsa gitlab google_compute_engine
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow-avh nvm aws brew pep8 pip python sudo bower common-aliases osx xcode virtualenv virtualenvwrapper vagrant tmux z django ssh-agent jenv)
+plugins=(git git-flow-avh nvm aws brew pep8 pip python sudo bower common-aliases osx xcode virtualenv virtualenvwrapper vagrant tmux z django gpg-agent jenv)
+# removed ssh-agent because we're now using gpg-agent
 
 # User configuration
 
@@ -73,6 +74,13 @@ export EDITOR='vim'
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
         source /usr/local/bin/virtualenvwrapper.sh
