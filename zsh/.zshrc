@@ -19,7 +19,7 @@ export UPDATE_ZSH_DAYS=13
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
-# Uncomment the following line to disable auto-setting terminal title.
+# Enable auto-setting terminal title (Oh My Zsh default). tmux ignores title changes (allow-rename off).
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
@@ -47,7 +47,7 @@ zstyle :omz:plugins:ssh-agent identities id_rsa gitlab google_compute_engine
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow-avh nvm aws brew pep8 pip python sudo bower common-aliases osx xcode virtualenv virtualenvwrapper vagrant tmux z django gpg-agent jenv)
+plugins=(git git-flow-avh nvm aws brew pep8 pip python sudo common-aliases xcode virtualenv virtualenvwrapper vagrant tmux z gpg-agent)
 # removed ssh-agent because we're now using gpg-agent
 
 # User configuration
@@ -82,9 +82,18 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+# Set up pyenv paths
+export PYENV_ROOT="$HOME/.pyenv"
+if command -v pyenv >/dev/null; then
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  export PATH="$PYENV_ROOT/shims:${PATH}"
+  eval "$(pyenv init -)"
+fi
+
 if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
         source /usr/local/bin/virtualenvwrapper.sh
 fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Insert custom aliases
 source $ZSH_CUSTOM/aliases.sh
@@ -98,14 +107,39 @@ bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-#export PATH="/Users/jann/anaconda2/bin:$PATH"
 export PATH="$PATH:/Library/TeX/texbin"
 export PATH="/usr/local/bin:$PATH"
 
 # Initialize Jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
 
 
 # for automated docker scripts
 export GITLAB_KEY_PATH="$HOME/.ssh/gitlab"
+
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+
+export GOOGLE_APPLICATION_CREDENTIALS=~/.terraform/files/admin/terraform-admin-257610-e323add0ac88.json
+
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/Users/jann/.reflex/.bun/_bun" ] && source "/Users/jann/.reflex/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.reflex/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc

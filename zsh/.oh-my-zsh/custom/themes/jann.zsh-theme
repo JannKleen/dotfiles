@@ -4,7 +4,7 @@ local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
 #PROMPT='${ret_status}$fg_no_bold[yellow]$(virtualenv_info)%{$fg_no_bold[cyan]%}%n%{$fg_no_bold[magenta]%}🐼 %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
 PROMPT='${ret_status}%{$fg_no_bold[yellow]%}$(virtualenv_info) 🐼  %{$fg_no_bold[green]%}%3~$(git_prompt_info)%{$reset_color%}» '
 
-RPROMPT='[%*]'
+# RPROMPT='[%*]'
 
 function virtualenv_info {
   [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`')'
