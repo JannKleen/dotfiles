@@ -121,8 +121,6 @@ export GITLAB_KEY_PATH="$HOME/.ssh/gitlab"
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
-export GOOGLE_APPLICATION_CREDENTIALS=~/.terraform/files/admin/terraform-admin-257610-e323add0ac88.json
-
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
